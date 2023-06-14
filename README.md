@@ -1,5 +1,13 @@
 # Parameter-Free
-Parameter-Free Optimizers for PyTorch
+
+Forked from [bremen79/parameterfree](https://github.com/bremen79/parameterfree). I added a parameter-free optimization algorithm based on the imaginary error function (erfi), which was proposed in 
+*Zhiyu Zhang, Ashok Cutkosky, Ioannis Paschalidis. PDE-Based Optimal Strategy for Unconstrained Online Learning. [ICML'22](https://arxiv.org/abs/2201.07877)* The implemented version is a variant without performance guarantees.
+
+This algorithm offers provable benefits over the KT algorithm in the convex, Lipschitz and single-epoch regime. However, its performance in ML training appears to be worse. Reasons are unclear to me due to the many factors involved.
+
+Below is the original documentation of the parameter-free optimization package. 
+
+## Parameter-Free Optimizers for PyTorch
 
 This is a library for parameter-free optimization in PyTorch. Parameter-free is a technical term that denotes a certain ability of an optimization algorithm to adapt to the unknown distance to the optimal solution. But in practice it means ``SGD without learning rates'' :)
 

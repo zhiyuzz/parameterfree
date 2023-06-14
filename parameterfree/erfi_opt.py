@@ -5,7 +5,19 @@ from torch.optim.optimizer import Optimizer
 
 
 class ERFI(Optimizer):
-    def __init__(self, params, eps: float = 1, weight_decay: float = 0):
+    r"""Implements an algorithm based on the imaginary error function.
+    The original version is from the paper `PDE-Based Optimal Strategy for Unconstrained Online Learning`_.
+    The implemented version is a variant without performance guarantees.
+    Arguments:
+        params (iterable): iterable of parameters to optimize or dicts defining
+            parameter groups
+        eps (float, optional): scaling parameter (default: 1)
+        weight_decay (float, optional): weight decay (L2 penalty) (default: 0)
+    .. _PDE-Based Optimal Strategy for Unconstrained Online Learning:
+        https://arxiv.org/abs/2201.07877
+    """
+
+    def __init__(self, params, eps: float = 1.0, weight_decay: float = 0):
         if not 0.0 <= eps:
             raise ValueError("Invalid eps value: {}".format(eps))
         if not 0.0 <= weight_decay:
@@ -20,8 +32,8 @@ class ERFI(Optimizer):
 
     @torch.no_grad()
     def step(self):
-
-        self._iter += 1
+        """Performs a single optimization step.
+        """
 
         for group in self.param_groups:
             weight_decay = group['weight_decay']
@@ -34,6 +46,8 @@ class ERFI(Optimizer):
             if weight_decay > 0:
                 for p in group['params']:
                     p.grad.add_(p, alpha=weight_decay)
+
+            self._iter += 1
 
             # update the sum of the negative gradients and the weights
             for p, t, x in zip(group['params'], group['theta'], group['x0']):
