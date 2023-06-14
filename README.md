@@ -1,7 +1,7 @@
 # Parameter-Free
 
 Forked from [bremen79/parameterfree](https://github.com/bremen79/parameterfree). I added a parameter-free optimization algorithm based on the imaginary error function (erfi), which was proposed in 
-*Zhiyu Zhang, Ashok Cutkosky, Ioannis Paschalidis. PDE-Based Optimal Strategy for Unconstrained Online Learning. [ICML'22](https://arxiv.org/abs/2201.07877)* The implemented version is a variant without performance guarantees.
+*Zhiyu Zhang, Ashok Cutkosky, Ioannis Paschalidis. PDE-Based Optimal Strategy for Unconstrained Online Learning. [ICML'22](https://arxiv.org/abs/2201.07877).* The implemented version is a variant without performance guarantees.
 
 This algorithm offers provable benefits over the KT algorithm in the convex, Lipschitz and single-epoch regime. However, its performance in ML training appears to be worse. Reasons are unclear to me due to the many factors involved.
 
